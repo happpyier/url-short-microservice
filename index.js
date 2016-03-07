@@ -7,7 +7,7 @@ app.get('/:tagId', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.url;
   var dummyVarTestStringified = JSON.stringify(request.url);
-  var preReponseParsed = request.params.tagId;
+  var preReponseParsed = 'request.params.tagId';
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
 
