@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
 var path = require("path");
+var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/:tagId', function(request, response) {
+app.get('/http://:tagId', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
