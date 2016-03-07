@@ -4,7 +4,7 @@ var path = require("path");
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/:tagId', function(request, response) {
-  var dummyVar = Object.keys(request.query);
+  var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.query);
   var preReponseParsed = request.params.tagId;
