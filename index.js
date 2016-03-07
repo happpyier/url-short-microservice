@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/:tagId', function(request, response) {
+app.post('/:tagId', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.url;
   var dummyVarTestStringified = JSON.stringify(request.url);
@@ -11,10 +11,10 @@ app.get('/:tagId', function(request, response) {
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
 
-app.get('/', function(request, response) {
+app.post('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
-app.listen(app.get('port'), function() {
+app.listen(app.post('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
