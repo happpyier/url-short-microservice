@@ -5,9 +5,10 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/:tagId', function(request, response) {
   var dummyVar = Object.keys(request.query);
-  var dummyVarTest = JSON.stringify(request.query);
+  var dummyVarTest = request.query;
+  var dummyVarTestStringified = JSON.stringify(request.query);
   var preReponseParsed = request.params.tagId;
-  response.send(dummyVar+'<br/>'+dummyVarTest+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
+  response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
 
 app.get('/', function(request, response) {
