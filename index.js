@@ -5,7 +5,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/:tagId', function(request, response) {
   
-  var preReponseParsed = escape(request.params.tagId);
+  var preReponseParsed = encodeURIComponent(request.params.tagId);
   response.send('Your orignal website is'+preReponseParsed);
 });
 
