@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(express.bodyParser());
 var path = require("path");
 app.set('port', (process.env.PORT || 5000));
 
