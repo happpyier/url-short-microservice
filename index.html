@@ -9,32 +9,48 @@
 	</head>
 	<body>
 		<div>
-			<h1> API Basejump: Timestamp microservice <h1>
+			<h1> API Basejump: URL Shortener <h1>
 			<div> 
 				<h2> User Stories <h2>
 				<p> 
-					1) I can pass a string as a parameter, and it will check to see whether that string contains either a Unix timestamp or a natural language date (example: January 1 2016)
+					1) I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
 				</p>
 				<p> 
-					2) If it does, it returns both the Unix timestamp and the natural language form of that date.
-				</p>
-				<p> 
-					3) If it does not contain a date or Unix timestamp, it returns null for those properties.
+					2) When I visit that shortened URL, it will redirect me to my original link.
 				</p>
 			</div>
 			<div>
-				<h3> Example usage: </h3>
+				<h3> Example creation usage: </h3>
 				<p>
-				<a href="https://timestamp--microservice.herokuapp.com/December%2015%202015"target="_blank">	https://timestamp--microservice.herokuapp.com/December 15 2015 </a>
+					<a href="https://url-short-microservice.herokuapp.com/new/https://www.google.com"target="_blank"> https://url-short-microservice.herokuapp.com/new/https://www.google.com </a>
 				</p>
 				<p>
-					<a href="https://timestamp--microservice.herokuapp.com/1450137600" target="_blank">https://timestamp--microservice.herokuapp.com/1450137600 </a>
+					<a href="https://url-short-microservice.herokuapp.com/new/http://freecodecamp.com/news " target="_blank"> https://url-short-microservice.herokuapp.com/new/http://freecodecamp.com/news  </a>
+				</p>
+				<p>
+					If you want to pass a site that doesn't exist (or an invalid url) for some reason you can do:
+				</p>
+				<p>
+					<a href="https://url-short-microservice.herokuapp.com/new/invalid?allow=true"target="_blank"> https://url-short-microservice.herokuapp.com/new/invalid?allow=true </a>
+				</p>
+			</div>
+			
+			<div>
+				<h3> Example creation output: </h3>
+				<p>
+				{ "original_url": "http://freecodecamp.com/news", "short_url": ""https://url-short-microservice.herokuapp.com/4" }
+				</p>			
+			</div>
+			<div>
+				<h3> Usage: </h3>
+				<p>
+				<a href="https://url-short-microservice.herokuapp.com/4"target="_blank"> https://url-short-microservice.herokuapp.com/4 </a>
 				</p>				
 			</div>
 			<div>
-				<h3> Example output: </h3>
+				<h3> Will redirect to: </h3>
 				<p>
-				{ "unix":1450137600, "natural": "December 15,2015" }
+					<a href="http://freecodecamp.com/news" target="_blank"> http://freecodecamp.com/news </a>
 				</p>
 			</div>
 		</div>
