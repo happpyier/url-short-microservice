@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/new/:tagId', function(request, response) {
+app.get('/:tagId', function(request, response) {
   
   var preReponseParsed = request.params.tagId;
   var reponseParsed = preReponseParsed.replace(",", "");
