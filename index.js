@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -19,3 +20,15 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+*/
+var fs = require('fs');
+var http = require('http');
+var url = require('url') ;
+
+http.createServer(function (request, response) {
+  var queryObject = url.parse(request.url,true).query;
+  console.log(queryObject);
+
+  response.writeHead(200);
+  response.end('Feel free to add query parameters to the end of the url');
+}).listen(8080);
