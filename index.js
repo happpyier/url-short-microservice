@@ -25,7 +25,7 @@ app.listen(app.get('port'), function() {
 var fs = require('fs');
 var http = require('http');
 //var url = require('url') ;
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (8080));
 app.createServer('/', function (request, response) {
   var queryObject = url.parse(request.url,true).query;
   console.log(queryObject);
