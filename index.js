@@ -1,10 +1,11 @@
-/*
+
 var express = require('express');
 var app = express();
 var path = require("path");
 var url = require("url");
-app.set('port', (process.env.PORT || 5000));
 
+
+/*
 app.get('/:tagId', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
@@ -23,12 +24,15 @@ app.listen(app.get('port'), function() {
 */
 var fs = require('fs');
 var http = require('http');
-var url = require('url') ;
-
-http.createServer(function (request, response) {
+//var url = require('url') ;
+app.set('port', (process.env.PORT || 5000));
+app.createServer(function (request, response) {
   var queryObject = url.parse(request.url,true).query;
   console.log(queryObject);
 
   response.writeHead(200);
   response.end('Feel free to add query parameters to the end of the url');
-}).listen(5000);
+});
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
