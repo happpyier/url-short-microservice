@@ -25,13 +25,16 @@ app.listen(app.get('port'), function() {
 var fs = require('fs');
 var http = require('http');
 //var url = require('url') ;
-app.set('port', (8080));
+app.set('port', (process.env.PORT || 5000));
 app.createServer('/', function (request, response) {
   var queryObject = url.parse(request.url,true).query;
   console.log(queryObject);
-  response.sendFile(path.join(__dirname+'/index.html'));
   response.writeHead(200);
   response.end('Feel free to add query parameters to the end of the url');
+});
+app.get('/', function(request, response) {
+  response.sendFile(path.join(__dirname+'/index.html'));
+  //response.end('Its Over!'); 
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
