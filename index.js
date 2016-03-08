@@ -29,7 +29,7 @@ app.set('port', (8080));
 app.createServer('/', function (request, response) {
   var queryObject = url.parse(request.url,true).query;
   console.log(queryObject);
-
+  response.sendFile(path.join(__dirname+'/index.html'));
   response.writeHead(200);
   response.end('Feel free to add query parameters to the end of the url');
 });
