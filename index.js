@@ -8,7 +8,7 @@ app.get('/:url', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
-  var preReponseParsed = decodeURI(request.url);
+  var preReponseParsed = (request.url).replace("%2F", "/");
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
 
