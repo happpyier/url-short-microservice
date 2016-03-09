@@ -1,12 +1,10 @@
-/*
 var express = require('express');
 var app = express();
-/*
 var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 app.set({ 'content-type': 'application/json; charset=utf-8' })
-app.put('/new/', function(request, response) {
+app.put('/:url/', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
@@ -22,24 +20,3 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 //LOOK INTO USING MONGODB, looking at this project from the wrong direction.
-*/
-var express = require('express');
-var app = express();
-var pg = require('pg');
-app.set('port', (process.env.PORT || 5000));
-
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
