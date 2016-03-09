@@ -4,7 +4,7 @@ var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/:url', function(escape(request), escape(response)) {
+app.get('/:url', function(escape(request), response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
