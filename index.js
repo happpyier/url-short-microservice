@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
-app.set({ 'content-type': 'application/json; charset=utf-8' })
+app.set({ 'content-type': 'text; charset=utf-8' })
 app.get('/:url', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
