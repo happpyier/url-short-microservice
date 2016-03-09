@@ -2,6 +2,14 @@ var express = require('express');
 var app = express();
 var path = require("path");
 var url = require("url");
+var request = require('request');
+request
+  .get('http://google.com/img.png')
+  .on('response', function(response) {
+    console.log(response.statusCode) // 200
+    console.log(response.headers['content-type']) // 'image/png'
+  });
+  /*
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/:url', function(request, response) {
@@ -19,3 +27,6 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
+*/
