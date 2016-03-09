@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -19,3 +20,15 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+*/
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  pfx: fs.readFileSync('server.pfx')
+};
+
+https.createServer(options, (req, res) => {
+  res.writeHead(200);
+  res.end('hello world\n');
+}).listen(8000);
