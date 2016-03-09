@@ -4,7 +4,7 @@ var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 app.set({ 'content-type': 'application/json; charset=utf-8' })
-app.put('/:url/', function(request, response) {
+app.put('/:url', function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
