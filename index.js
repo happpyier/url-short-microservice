@@ -5,14 +5,11 @@ var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/:url', function(request, response) {
-	/*
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
   var preReponseParsed = (request.url).replace(/%2F/g, "/");
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
-  */
-  response.end('it ended');
 });
 
 app.get('/', function(request, response) {
@@ -22,3 +19,4 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+//LOOK INTO USING MONGODB, looking at this project from the wrong direction.
