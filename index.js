@@ -4,10 +4,11 @@ var path = require("path");
 var url = require("url");
 var request = require('request');
 request
-  .get('https://url-short-microservice.herokuapp.com/')
-  .on('response', function(response) {
-    console.log(response.statusCode) // 200
-    console.log(response.headers['content-type']) // 'image/png'
+  .get('/:url')
+  .on('response', function(request,response) {
+    console.log(response.statusCode); // 200;
+    console.log(response.headers['content-type']); // 'image/png';
+	response.send(request.url);
   });
   /*
 app.set('port', (process.env.PORT || 5000));
