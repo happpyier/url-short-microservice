@@ -3,9 +3,7 @@ var app = express();
 var path = require("path");
 var url = require("url");
 var request = require('request');
-request
-  .get('/:url')
-  .on('response', function(request,response) {
+request.get('/:url').on('response', function(request,response) {
     console.log(response.statusCode); // 200;
     console.log(response.headers['content-type']); // 'image/png';
 	response.send(request.url);
