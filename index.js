@@ -4,7 +4,7 @@ var path = require("path");
 var url = require("url");
 var request = require('request');
 request
-  .get('http://google.com/img.png')
+  .get('https://url-short-microservice.herokuapp.com/')
   .on('response', function(response) {
     console.log(response.statusCode) // 200
     console.log(response.headers['content-type']) // 'image/png'
