@@ -10,6 +10,7 @@ app.get('/:url', function(request) {
   var dummyVarTestStringified = JSON.stringify(request.url);
   var preReponseParsed = (request.url).replace(/%2F/g, "/");
   console.log(preReponseParsed);
+  request.end();
   //response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
 
