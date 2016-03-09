@@ -6,8 +6,8 @@ app.set('port', (process.env.PORT || 5000));
 app.set({ 'content-type': 'text; charset=utf-8' })
 app.get('/:url', function(request, response) {
   var dummyVar = typeof(request);
-  var dummyVarTest = (request.query).replaceAll("\/", "IThasBEENreplaced");
-  var dummyVarTestStringified = JSON.stringify(request.url);
+  var dummyVarTest = request.query;
+  var dummyVarTestStringified = JSON.stringify(request.url).replaceAll("\/", "IThasBEENreplaced");
   var preReponseParsed = (request.url).replace(/%2F/g, "/");
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
 });
