@@ -12,6 +12,7 @@ app.get('/:url', function(request, response) {
   var preReponseParsed = (request.url).replace(/%2F/g, "/");
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
   */
+  response.end('it ended');
 });
 
 app.get('/', function(request, response) {
