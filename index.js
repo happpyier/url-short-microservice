@@ -26,8 +26,8 @@ app.get('/', function(request, response) {
   var dummyVar = typeof(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
-  //var preReponseParsed = (request.url).replace(/%2F/g, "/");
-  var preReponseParsed = request.url;
+  var preReponseParsed = (request.url).replace(/%2F/g, "/");
+  //var preReponseParsed = request.url;
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
   
 });
