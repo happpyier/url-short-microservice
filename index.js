@@ -40,9 +40,9 @@ app.listen(app.get('port'), function() {
 //Forward Slashes needs to equal %2F
 
 */
-var http = require(“http”);
+var http = require('http');
 var http_server = http.createServer();
-http_server.on(‘request’, function(request, response){
-response.end(‘HTTP response’);
+http_server.on('request', function(request, response){
+response.end('HTTP response');
 });
-http_server.listen(5000,’localhost’);
+http_server.listen(5000,'localhost');
