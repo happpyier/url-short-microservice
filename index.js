@@ -4,7 +4,7 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 app.set('port', (process.env.PORT || 5000));
-app.set("Content-Type", "application/x-www-form-urlencoded");
+//app.set("Content-Type", "application/x-www-form-urlencoded");
 /*
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
