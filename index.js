@@ -38,7 +38,14 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.get('/:url', [convertURL, convertURL2], function(request, response) {
+app.get('/:url', [convertURL, convertURL2]);
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+//Forward Slashes needs to equal %2F
+ /*
+ function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
@@ -46,9 +53,5 @@ app.get('/:url', [convertURL, convertURL2], function(request, response) {
   //var preReponseParsed = request.url;
   response.send(dummyVar+'<br/> dummyVarTest--->'+dummyVarTest+'<br/> dummyVarTestStringified--->'+dummyVarTestStringified+'<br/><br/>'+'Your orignal website is<br/>'+preReponseParsed);
   
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-//Forward Slashes needs to equal %2F
+}
+*/
