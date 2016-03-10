@@ -1,4 +1,5 @@
-//http://expressjs.com/en/guide/routing.html USING this as a reference
+//http://expressjs.com/en/guide/routing.html USING this as a reference;
+//http://stackoverflow.com/questions/20089582/how-to-get-url-parameter-in-express-node-js Also a reference;
 var express = require('express');
 var app = express();
 var path = require("path");
