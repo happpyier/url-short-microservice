@@ -3,6 +3,7 @@ var app = express();
 var path = require("path");
 var url = require("url");
 var pg = require('pg');
+var url = "";
 app.set('port', (process.env.PORT || 5000));
 //app.set("Content-Type", "application/x-www-form-urlencoded");
 app.get('/', function(request, response) {
@@ -20,7 +21,7 @@ app.get('/db', function (request, response) {
     });
   });
 })
-app.get('/:url', function(request, response) {
+app.get('/:url', url=url.replace(/%2F/g, "/") ,function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
