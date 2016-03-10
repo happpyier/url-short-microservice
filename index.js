@@ -5,10 +5,11 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
-var convertURL = function (request, response, next){
+var convertURL = function (request, response, next, id){
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
-  next();
+  response.send(UrlValue);
+  //next();
 }
 var convertURL2 = function (request, response){
 	response.send(UrlValue);
@@ -31,8 +32,12 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.param('/:tagId', [convertURL, convertURL2], id);
-
+//app.param('/:tagId', convertURL, next, id);
+app.param('tagId', function (req, res, tagId) {
+  preUrlValue = tagId;
+  UrlValue = preUrlValue.replace(/\//g, "%2F");
+  response.send(UrlValue);
+});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
