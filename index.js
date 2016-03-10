@@ -1,4 +1,3 @@
-/*
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -37,13 +36,3 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 //Forward Slashes needs to equal %2F
-*/
-var url = require('url');
-
-function fullUrl(req) {
-  return url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
-    pathname: req.originalUrl
-  });
-}
