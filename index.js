@@ -4,13 +4,14 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var url = "";
-var convertURL = function (request, response){
+var convertURL = function (request, response, next){
 	//JSON.stringify(urlValue)
 	var dummyVar = Object.keys(request);
 	var dummyVarTest = request.query;
 	var dummyVarTestStringified = JSON.stringify(request.url);
 	var preReponseParsed = (request.url).replace(/%2F/g, "/");
 	response.send('Your orignal website is<br/>'+'preReponseParsed');
+	next();
 }
 var convertURL2 = function (request, response){
 	//JSON.stringify(urlValue)
