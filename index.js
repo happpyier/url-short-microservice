@@ -9,7 +9,7 @@ var convertURL = function (request, response, next){
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   next();
 }
-var convertURL2 = function (request, response){
+var convertURL2 = function (response){
 	response.send(UrlValue);
 }
 app.set('port', (process.env.PORT || 5000));
