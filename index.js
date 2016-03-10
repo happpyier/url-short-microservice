@@ -40,10 +40,10 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/:url', function (request, response, next) {
-  console.log('the response will be sent by the next function ...');
+  var UrlValue = request.url;
   next();
 }, function (request, response) {
-  response.send('Hello from B!');
+  response.send(UrlValue);
 });
 
 app.listen(app.get('port'), function() {
