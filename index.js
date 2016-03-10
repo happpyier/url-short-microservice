@@ -40,7 +40,8 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/:url', function (request, response, next) {
-  UrlValue = request.url;
+  preUrlValue = request.url;
+  UrlValue = preUrlValue.replace(/\//g, "%2F");
   next();
 }, function (request, response) {
   response.send(UrlValue);
