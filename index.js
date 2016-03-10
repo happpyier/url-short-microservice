@@ -5,12 +5,10 @@ var url = require("url");
 var pg = require('pg');
 app.set('port', (process.env.PORT || 5000));
 //app.set("Content-Type", "application/x-www-form-urlencoded");
-/*
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
-*/
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
