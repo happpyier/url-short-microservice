@@ -6,7 +6,7 @@ var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
 var convertURL = function (request, response, next){
-  preUrlValue = request.url;
+  preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   next();
 }
@@ -31,7 +31,7 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.param('/:tagId', [convertURL, convertURL2]);
+app.param('/:tagId', [convertURL, convertURL2], id);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
