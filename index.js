@@ -38,7 +38,7 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.get('/:url', convertURL, function(request, response) {
+app.get('/:url', [convertURL, convertURL2], function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
