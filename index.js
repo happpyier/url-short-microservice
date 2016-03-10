@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 var url = require("url");
 var pg = require('pg');
-var url = "";
+var UrlValue = "";
 var convertURL = function (request, response, next){
 	//JSON.stringify(urlValue)
 	var dummyVar = Object.keys(request);
@@ -40,7 +40,7 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/:url', function (request, response, next) {
-  var UrlValue = request.url;
+  UrlValue = request.url;
   next();
 }, function (request, response) {
   response.send(UrlValue);
