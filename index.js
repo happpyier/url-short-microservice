@@ -3,10 +3,8 @@ var app = express();
 var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
-app.set("Content-Type", "text/cache-manifest");
-app.contentType.parse('image/svg+xml; charset=utf-8')
+app.set("Content-Type", "application/x-www-form-urlencoded");
 app.get('/:url', function(request, response) {
-  response.header("Content-Type", "text/cache-manifest");
   var dummyVar = typeof(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
