@@ -38,14 +38,12 @@ app.listen(app.get('port'), function() {
 });
 //Forward Slashes needs to equal %2F
 */
-var fs = require('fs');
-var http = require('http');
-var url = require('url') ;
+var url = require('url');
 
-http.createServer(function (req, res) {
-  var queryObject = url.parse(req.url,true).query;
-  console.log(queryObject);
-
-  res.writeHead(200);
-  res.end('Feel free to add query parameters to the end of the url');
-}).listen(5000);
+function fullUrl(req) {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+}
