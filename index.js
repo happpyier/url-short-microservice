@@ -38,7 +38,7 @@ app.param('id', function (request, response, next, id) {
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   
 });
-app.get(':id', function (request, response) {
+app.get('/:id', function (request, response) {
   response.send(UrlValue);
 });
 app.listen(app.get('port'), function() {
