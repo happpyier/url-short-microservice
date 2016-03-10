@@ -1,5 +1,3 @@
-/*
-
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -38,11 +36,3 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 //Forward Slashes needs to equal %2F
-
-*/
-var http = require('http');
-var http_server = http.createServer();
-http_server.on('request', function(request, response){
-response.end('HTTP response');
-});
-http_server.listen(5000,'localhost');
