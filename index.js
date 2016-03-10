@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
-app.set({ 'content-type': 'text; charset=Numb' })
+app.set("Content-Type", "text/cache-manifest");
 app.get('/:url', function(request, response) {
   var dummyVar = typeof(request);
   var dummyVarTest = request.query;
