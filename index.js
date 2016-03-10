@@ -4,6 +4,14 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var url = "";
+var convertURL = function (request, response){
+	//JSON.stringify(urlValue)
+	var dummyVar = Object.keys(request);
+	var dummyVarTest = request.query;
+	var dummyVarTestStringified = JSON.stringify(request.url);
+	var preReponseParsed = (request.url).replace(/%2F/g, "/");
+	response.send('Your orignal website is<br/>'+'preReponseParsed');
+}
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
@@ -21,7 +29,8 @@ app.get('/db', function (request, response) {
     });
   });
 });
-app.get('/:url' ,function(request.replace(/\//g, "%2F"), response) {
+
+app.get('/:url', convertURL, function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
