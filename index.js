@@ -1,3 +1,4 @@
+//http://expressjs.com/en/guide/routing.html USING this as a reference
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -9,8 +10,8 @@ var convertURL = function (request, response, next){
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   next();
 }
-var convertURL2 = function (){
-	console.log(UrlValue);
+var convertURL2 = function (request, response){
+	response.send(UrlValue);
 }
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
