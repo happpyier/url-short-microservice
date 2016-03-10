@@ -41,12 +41,12 @@ app.listen(app.get('port'), function() {
 const https = require('https');
 
 var options = {
-  hostname: 'https://url-short-microservice.herokuapp.com/',
-  port: 5000,
-  path: '/:url',
+  hostname: 'encrypted.google.com',
+  port: 443,
+  path: '/',
   method: 'GET'
 };
-
+/
 var req = https.request(options, (res) => {
   console.log('statusCode: ', res.statusCode);
   console.log('headers: ', res.headers);
