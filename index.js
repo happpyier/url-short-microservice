@@ -4,6 +4,7 @@ var path = require("path");
 var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/cache-manifest");
+app.contentType.parse('/:url; charset=utf-8')
 app.get('/:url', function(request, response) {
   response.header("Content-Type", "text/cache-manifest");
   var dummyVar = typeof(request);
