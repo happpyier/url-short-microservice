@@ -21,7 +21,7 @@ app.get('/db', function (request, response) {
     });
   });
 });
-app.get('/:url', function(request, response) {
+app.get('/:url', url ,function(request.replace(/%2F/g, "/"), response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
