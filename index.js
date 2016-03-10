@@ -23,7 +23,7 @@ app.get('/db', function (request, response) {
   });
 })
 app.get('/:url', function(request, response) {
-  var dummyVar = typeof(request);
+  var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
   var dummyVarTestStringified = JSON.stringify(request.url);
   var preReponseParsed = (request.url).replace(/%2F/g, "/");
