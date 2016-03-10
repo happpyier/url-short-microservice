@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require("path");
 var url = require("url");
+var pg = require('pg');
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "application/x-www-form-urlencoded");
 app.get('/:url', function(request, response) {
@@ -17,6 +18,18 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+})
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
