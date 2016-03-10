@@ -5,21 +5,12 @@ var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
 var convertURL = function (request, response, next){
-	//JSON.stringify(urlValue)
-	var dummyVar = Object.keys(request);
-	var dummyVarTest = request.query;
-	var dummyVarTestStringified = JSON.stringify(request.url);
-	var preReponseParsed = (request.url).replace(/%2F/g, "/");
-	response.send('Your orignal website is<br/>'+'preReponseParsed');
-	next();
+  preUrlValue = request.url;
+  UrlValue = preUrlValue.replace(/\//g, "%2F");
+  next();
 }
 var convertURL2 = function (request, response){
-	//JSON.stringify(urlValue)
-	var dummyVar = Object.keys(request);
-	var dummyVarTest = request.query;
-	var dummyVarTestStringified = JSON.stringify(request.url);
-	var preReponseParsed = (request.url).replace(/%2F/g, "/");
-	response.send('<br/>Your orignal website is<br/>'+preReponseParsed);
+	response.send(UrlValue);
 }
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
@@ -39,13 +30,7 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.get('/:url', function (request, response, next) {
-  preUrlValue = request.url;
-  UrlValue = preUrlValue.replace(/\//g, "%2F");
-  next();
-}, function (request, response) {
-  response.send(UrlValue);
-});
+app.get('/:url', [convertURL, convertURL2]);f
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
