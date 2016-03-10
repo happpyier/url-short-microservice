@@ -5,7 +5,7 @@ var url = require("url");
 var pg = require('pg');
 var url = "";
 app.set('port', (process.env.PORT || 5000));
-//app.set("Content-Type", "application/x-www-form-urlencoded");
+app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
@@ -20,7 +20,7 @@ app.get('/db', function (request, response) {
        { response.render('pages/db', {results: result.rows} ); }
     });
   });
-})
+});
 app.get('/:url', url.replace(/%2F/g, "/") ,function(request, response) {
   var dummyVar = Object.keys(request);
   var dummyVarTest = request.query;
