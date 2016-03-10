@@ -33,9 +33,12 @@ app.get('/db', function (request, response) {
 });
 
 //app.param('/:tagId', convertURL, next, id);
-app.param('/:tagId', function (request, response, tagId) {
-  preUrlValue = tagId;
+app.param('id', function (request, response, next, id) {
+  preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
+  
+});
+app.get(':id', function (request, response) {
   response.send(UrlValue);
 });
 app.listen(app.get('port'), function() {
