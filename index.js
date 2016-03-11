@@ -17,7 +17,7 @@ var convertURL = function (request, response, next) {
 	   { resultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = JSON.stringify({results: result.rows}); }
+	   { resultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
