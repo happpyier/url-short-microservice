@@ -12,9 +12,9 @@ var convertURL = function (request, response, next) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err); resultsSQL = err; }
+       { console.error(err); response.send("Error " + err); resultsSQL = err+'fail'; }
       else
-       { response.render('pages/db', {results: result.rows} ); resultsSQL = results.rows;}
+       { response.render('pages/db', {results: result.rows} ); resultsSQL = results.rows+'pass';}
     });
   });
   next();
