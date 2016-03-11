@@ -23,7 +23,7 @@ var convertURL = function (request, response, next) {
 }
 var convertURL2 = function (request, response){
   var OrignalHttp = (request.url).substring(5);
-  response.send(dummyVar+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
 var outputURL = console.log(UrlValue);
