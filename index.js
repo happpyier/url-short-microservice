@@ -30,7 +30,7 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
-app.get(/^\/http/i, [convertURL]);
+app.get(/^\/http/i, [convertURL, convertURL2]);
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
   response.send('This is the page that sends the url to the DB <br/>'+OrignalHttp);
