@@ -13,10 +13,10 @@ var convertURL = function (request, response, next) {
     client.query('SELECT * FROM test_table', function(err, result) {
       if (err)
        //{ resultsSQL = err; console.error(err); response.send("Error " + err);  }
-	   { resultsSQL = err; }
+	   { resultsSQL = 'err'; }
       else
        //{ resultsSQL = result.rows; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = result.rows; }
+	   { resultsSQL = 'result.rows'; }
 	   done();
     });
   });
