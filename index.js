@@ -22,10 +22,7 @@ app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
-  //response.end('Its Over!'); 
-});
-app.get('/db', function (request, response) {
-
+  response.end(); 
 });
 app.get(/^\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(1);
