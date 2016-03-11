@@ -6,7 +6,7 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
-var convertURL = function (request, response) {
+var convertURL = function (request, response, next) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
@@ -16,6 +16,7 @@ var convertURL = function (request, response) {
        { response.render('pages/db', {results: result.rows} ); }
     });
   });
+  next();
 };
 var convertURL2 = function (request, response){
   var OrignalHttp = (request.url).substring(5);
