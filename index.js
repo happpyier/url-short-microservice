@@ -18,7 +18,7 @@ var convertURL = function (request, response, next) {
 	   done();
     });
   });
-  dummyVar = 'It eats carrots';
+  resultsSQL = 'It eats carrots';
   next();
 }
 var convertURL2 = function (request, response){
