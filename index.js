@@ -42,6 +42,7 @@ app.param('url', function (request, response, next, id) {
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   response.send(UrlValue);
   response.end("it ended!");
+  next();
 });
 app.get('/:url', function () {
   console.log('POST request to the homepage');
