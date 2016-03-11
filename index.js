@@ -35,12 +35,14 @@ app.get('/db', function (request, response) {
     });
   });
 });
-app.get(/^\/http/i, function (request, response) {  
-  response.send('This is the page that gets the url from the DB <br/>'+(request.url).substring(1));
+app.get(/^\/http/i, function (request, response) {
+  var OrignalHttp = (request.url).substring(1);  
+  response.send('This is the page that gets the url from the DB <br/>'+OrignalHttp);
   response.end();
 });
 app.get(/^\/new\/http/i, function (request, response) {
-  response.send('This is the page that sends the url to the DB <br/>'+(request.url).substring(1));
+  var OrignalHttp = (request.url).substring(5);
+  response.send('This is the page that sends the url to the DB <br/>'+OrignalHttp);
   response.end();
 });
 app.listen(app.get('port'), function() {
