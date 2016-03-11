@@ -6,21 +6,22 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
+var resultsSQL = "";
 var convertURL = function (request, response, next) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); response.send("Error " + err); resultsSQL = err; }
       else
-       { response.render('pages/db', {results: result.rows} ); }
+       { response.render('pages/db', {results: result.rows} ); resultsSQL = results;}
     });
   });
   next();
 };
 var convertURL2 = function (request, response){
   var OrignalHttp = (request.url).substring(5);
-  response.send('This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   response.end();
 };
 var outputURL = console.log(UrlValue);
