@@ -40,13 +40,14 @@ app.get('/db', function (request, response) {
 app.param('url', function (request, response, next, id) {
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
-  response.send(UrlValue);
+  response.send(UrlValue+'<br/>'+Object.keys(req));
   response.end("it ended!");
   next();
 });
 app.get('/:url', function (req, res) {  
-  res.send(Object.keys(req));
+ 
   console.log('Someone made a request!');
+  res.end();
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
