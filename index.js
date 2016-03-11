@@ -39,7 +39,7 @@ app.get(/^\/http/i, function (request, response) {
     });
   });  
   
-  response.end();
+  response.end('Nothign was sent');
 });
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
