@@ -43,9 +43,9 @@ app.param('url', function (request, response, next, id) {
   response.send(UrlValue);
   response.end("it ended!");
 });
-//app.post('/:url', function (req, res) {
-//  res.send('POST request to the homepage');
-//});
+app.post('/:url', function () {
+  console.log('POST request to the homepage');
+});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
