@@ -45,7 +45,7 @@ app.param('url', function (request, response, next, id) {
   //next();
 });
 app.get('/HelloKitty/', function (req, res) {  
-   res.send("HELLO to the Kitty!")
+   res.send("HELLO to the Kitty! <br/>" + UrlValue)
   console.log('Someone made a request!');
   res.end();
 });
