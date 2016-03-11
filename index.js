@@ -6,26 +6,7 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
-/*
 var convertURL = function (request, response, next, id){
-  preUrlValue = id;
-  UrlValue = preUrlValue.replace(/\//g, "%2F");
-  response.send(UrlValue);
-  //next();
-}
-var convertURL2 = function (request, response){
-	response.send(UrlValue);
-}
-*/
-var outputURL = console.log(UrlValue);
-app.set('port', (process.env.PORT || 5000));
-app.set("Content-Type", "text/html");
-app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname+'/index.html'));
-  //response.end('Its Over!'); 
-});
-app.get(/^\/http/i, function (request, response) {
-  var OrignalHttp = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
@@ -34,10 +15,22 @@ app.get(/^\/http/i, function (request, response) {
       else
        { response.render('pages/db', {results: result.rows} ); }
     });
-  });  
+  });
+  next();
+}
+var convertURL2 = function (request, response){
+  var OrignalHttp = (request.url).substring(5);
   response.send('This is the page that gets the url from the DB <br/>'+OrignalHttp);
   response.end();
+}
+var outputURL = console.log(UrlValue);
+app.set('port', (process.env.PORT || 5000));
+app.set("Content-Type", "text/html");
+app.get('/', function(request, response) {
+  response.sendFile(path.join(__dirname+'/index.html'));
+  //response.end('Its Over!'); 
 });
+app.get(/^\/http/i, [convertURL, convertURL2]);
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
   response.send('This is the page that sends the url to the DB <br/>'+OrignalHttp);
