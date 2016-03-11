@@ -44,11 +44,12 @@ app.param('url', function (request, response, next, id) {
   response.end("it ended!");
   next();
 });
-app.get('/:^(/http)/', function (req, res) {  
- 
-  console.log('Someone made a request!');
-  res.end();
-});
+route : function(url, fn, type) {
+    this.handlers.push({ url: url, fn: fn, type: type });
+},
+get : function(url, fn) {
+    this.route(url, fn, 'GET');
+}
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
