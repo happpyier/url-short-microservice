@@ -44,7 +44,7 @@ app.param('url', function (request, response, next, id) {
   response.end("it ended!");
   next();
 });
-app.get('/:url', function (req, res) {  
+app.get('/:httpVersion', function (req, res) {  
  
   console.log('Someone made a request!');
   res.end();
