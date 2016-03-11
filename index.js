@@ -44,8 +44,9 @@ app.param('url', function (request, response, next, id) {
   response.end("it ended!");
   next();
 });
-app.get('/:url', function () {
-  console.log('POST request to the homepage');
+app.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
