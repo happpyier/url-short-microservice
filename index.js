@@ -43,10 +43,6 @@ app.get(/^\/new\/http/i, function (request, response) {
   response.send('This is the page that sends the url to the DB <br/>'+request.url);
   response.end();
 });
-app.get(/^\/http/i, function (request, response) {  
-  response.send(request.url);
-  response.end();
-});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
