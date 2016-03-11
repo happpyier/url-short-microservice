@@ -39,10 +39,11 @@ app.get('/db', function (request, response) {
 app.param('url', function (request, response, next, id) {
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
+  response.send(UrlValue);
   next();
 });
 app.get('/:url', function (request, response) {
-  response.send(UrlValue);
+  //response.send(UrlValue);
   //response.end("it ended!");
 });
 app.listen(app.get('port'), function() {
