@@ -8,9 +8,8 @@ var pg = require('pg');
 var UrlValue = "";
 var resultsSQL = "";
 var convertURL = function (request, response, next) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client) {
     client.query('SELECT * FROM test_table', function(err, result) {
-      done();
       if (err)
        { console.error(err); response.send("Error " + err); resultsSQL = err; }
       else
@@ -31,7 +30,7 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
-app.get(/^\/http/i, [convertURL2]);
+app.get(/^\/http/i, [convertURL]);
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
   response.send('This is the page that sends the url to the DB <br/>'+OrignalHttp);
