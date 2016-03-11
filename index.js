@@ -35,19 +35,9 @@ app.get('/db', function (request, response) {
     });
   });
 });
-
-//app.param('/:tagId', convertURL, next, id);
-app.param('url', function (request, response, next, id) {
-  preUrlValue = id;
-  UrlValue = preUrlValue.replace(/\//g, "%2F");
-  response.send(UrlValue+'<br/>'+Object.keys(request)+'<br/>'+request.httpVersion);
-  response.end("it ended!");
-  next();
-});
-app.get(/http/i, function (req, res) {  
-   res.send("HELLO to the Kitty! <br/>" + UrlValue)
-  console.log('Someone made a request!');
-  res.end();
+app.get(/http/i, function (request, response) {  
+  response.send(request.url);
+  response.end();
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
