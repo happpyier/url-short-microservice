@@ -44,7 +44,7 @@ app.param('url', function (request, response, next, id) {
   response.end("it ended!");
   next();
 });
-app.all('/:url', function (req, res, next) {  
+app.param('/:url', function (req, res, next) {  
   console.log('Someone made a request!');
   next();
 });
