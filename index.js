@@ -12,9 +12,11 @@ var convertURL = function (request, response, next) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       if (err)
-       { resultsSQL = err; console.error(err); response.send("Error " + err);  }
+       //{ resultsSQL = err; console.error(err); response.send("Error " + err);  }
+	   { resultsSQL = err; }
       else
-       { resultsSQL = result.rows; response.render('pages/db', {results: result.rows} ); }
+       //{ resultsSQL = result.rows; response.render('pages/db', {results: result.rows} ); }
+	   { resultsSQL = result.rows; }
 	   done();
     });
   });
