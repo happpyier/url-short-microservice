@@ -14,7 +14,7 @@ var convertURL = function (request, response, next) {
       if (err)
        { console.error(err); response.send("Error " + err); resultsSQL = err; }
       else
-       { response.render('pages/db', {results: result.rows} ); resultsSQL = results;}
+       { response.render('pages/db', {results: result.rows} ); resultsSQL = results.rows;}
     });
   });
   next();
@@ -22,7 +22,7 @@ var convertURL = function (request, response, next) {
 var convertURL2 = function (request, response){
   var OrignalHttp = (request.url).substring(5);
   response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
-  response.end();
+  //response.end();
 };
 var outputURL = console.log(UrlValue);
 app.set('port', (process.env.PORT || 5000));
