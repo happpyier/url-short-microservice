@@ -6,6 +6,7 @@ var path = require("path");
 var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
+/*
 var convertURL = function (request, response, next, id){
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
@@ -15,6 +16,7 @@ var convertURL = function (request, response, next, id){
 var convertURL2 = function (request, response){
 	response.send(UrlValue);
 }
+*/
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
@@ -41,6 +43,7 @@ app.param('url', function (request, response, next, id) {
 });
 app.get('/:url', function (request, response) {
   response.send(UrlValue);
+  response.end("it ended!");
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
