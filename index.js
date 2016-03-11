@@ -9,8 +9,9 @@ var UrlValue = "";
 var resultsSQL = "";
 var dummyVar = "";
 var convertURL = function (request, response, next) {
+  var OrignalHttpForUse = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
+    client.query('SELECT original_url, short_url FROM url_short_microservice WHERE original_url ='+OrignalHttpForUse, function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
@@ -23,7 +24,7 @@ var convertURL = function (request, response, next) {
   next();
 }
 var convertURL2 = function (request, response){
-  var OrignalHttp = (request.url).substring(5);
+  var OrignalHttp = (request.url).substring(1);
   response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
