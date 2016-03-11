@@ -42,7 +42,7 @@ app.param('url', function (request, response, next, id) {
   
 });
 app.get('/:url', function (request, response) {
-  response.send(UrlValue);
+  //response.send(UrlValue);
   response.end("it ended!");
 });
 app.listen(app.get('port'), function() {
