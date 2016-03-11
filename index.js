@@ -35,7 +35,7 @@ app.get('/db', function (request, response) {
     });
   });
 });
-app.get(/http/i, function (request, response) {  
+app.get(/^\/http/i, function (request, response) {  
   response.send(request.url);
   response.end();
 });
