@@ -29,9 +29,8 @@ app.get('/db', function (request, response) {
 });
 app.get(/^\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(1);
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client) {
     client.query('SELECT * FROM test_table', function(err, result) {
-      done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
@@ -39,7 +38,7 @@ app.get(/^\/http/i, function (request, response) {
     });
   });  
   
-  response.end('Nothign was sent');
+  response.end('Nothing was sent');
 });
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
