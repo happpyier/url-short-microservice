@@ -42,8 +42,8 @@ app.param('url', function (request, response, next, id) {
   next();
 });
 app.get('/:url', function (request, response) {
-  //response.send(UrlValue);
-  response.end("it ended!");
+  response.send(UrlValue);
+  //response.end("it ended!");
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
