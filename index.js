@@ -7,6 +7,7 @@ var url = require("url");
 var pg = require('pg');
 var UrlValue = "";
 var resultsSQL = "";
+var dummyVar = "";
 var convertURL = function (request, response, next) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
@@ -17,13 +18,14 @@ var convertURL = function (request, response, next) {
 	   done();
     });
   });
+  dummyVar = 'It eats carrots';
   next();
-};
+}
 var convertURL2 = function (request, response){
   var OrignalHttp = (request.url).substring(5);
-  response.send(convertURL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(dummyVar+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
-};
+}
 var outputURL = console.log(UrlValue);
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
