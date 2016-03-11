@@ -25,19 +25,20 @@ app.get('/', function(request, response) {
   //response.end('Its Over!'); 
 });
 app.get('/db', function (request, response) {
+
+});
+app.get(/^\/http/i, function (request, response) {
+  var OrignalHttp = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/db', {results: result.rows} ); }
+       { response.send('This is the page that gets the url from the DB <br/>'+OrignalHttp+'the Database results are<br/>'+result); }
     });
-  });
-});
-app.get(/^\/http/i, function (request, response) {
-  var OrignalHttp = (request.url).substring(1);  
-  response.send('This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  });  
+  
   response.end();
 });
 app.get(/^\/new\/http/i, function (request, response) {
