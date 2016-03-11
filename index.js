@@ -40,12 +40,9 @@ app.param('url', function (request, response, next, id) {
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   response.send(UrlValue);
-  next();
+  response.end("it ended!");
 });
-app.get('/:url', function (request, response) {
-  //response.send(UrlValue);
-  //response.end("it ended!");
-});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
