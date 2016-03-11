@@ -16,7 +16,7 @@ var convertURL = function (request, response, next) {
 	   { resultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = {results: result.rows}; }
+	   { resultsSQL = results: result.rows; }
 	   done();
     });
   });
