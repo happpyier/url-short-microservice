@@ -37,7 +37,7 @@ app.get('/db', function (request, response) {
 });
 
 //app.param('/:tagId', convertURL, next, id);
-app.param('url', function (request, response, next, id) {
+app.param('httpVersion', function (request, response, next, id) {
   preUrlValue = id;
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   response.send(UrlValue+'<br/>'+Object.keys(request));
