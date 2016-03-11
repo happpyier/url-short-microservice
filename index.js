@@ -42,7 +42,7 @@ app.param('url', function (request, response, next, id) {
   UrlValue = preUrlValue.replace(/\//g, "%2F");
   response.send(UrlValue+'<br/>'+Object.keys(request)+'<br/>'+request.httpVersion);
   response.end("it ended!");
-  //next();
+  next();
 });
 app.get('/HelloKitty/', function (req, res) {  
    res.send("HELLO to the Kitty! <br/>" + UrlValue)
