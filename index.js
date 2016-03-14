@@ -22,7 +22,7 @@ var getInfoFromDB1 = function (request, response, next) {
     });
   });
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT id FROM url_short_microservice', function(err, result) {
+    client.query('SELECT id FROM url_short_microservice order by id desc limit 1', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
