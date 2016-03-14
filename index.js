@@ -32,7 +32,7 @@ var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO url_short_microservice (original_url, short_url) VALUES ('+OrignalHttpForUse+', "test") WHERE NOT EXISTS ( SELECT original_url FROM url_short_microservice WHERE original_url ='+mysqlOrignalHttpForUse+')', function(err, result) {
+    client.query('INSERT INTO url_short_microservice (original_url, short_url) VALUES ('+escape(OrignalHttpForUse)+', "test") WHERE NOT EXISTS ( SELECT original_url FROM url_short_microservice WHERE original_url ='+escape(OrignalHttpForUse)+')', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
