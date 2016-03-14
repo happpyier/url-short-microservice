@@ -28,7 +28,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = JSON.stringify(result.rows); }
+	   { resultsidSQL = JSON.stringify(result); }
 	   done();
     });
   });
