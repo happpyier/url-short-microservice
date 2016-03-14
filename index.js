@@ -41,7 +41,7 @@ var getInfoFromDB2 = function (request, response){
 }
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
-  var mysqlID = resultsidSQL+1;
+  var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query("INSERT INTO url_short_microservice (original_url, short_url) VALUES ('"+mysqlOrignalHttpForUse+"', 'https://url-short-microservice.herokuapp.com/"+mysqlID+"')", function(err, result) {
