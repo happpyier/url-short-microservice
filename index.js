@@ -60,7 +60,7 @@ var sendInfoToDB1 = function (request, response, next) {
 var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-  response.send(resultsSQL.replace(/&colon/g, ':'));
+  response.send(mysqlOrignalHttpForUse+'<br/>This is the page that sends the url to the DB <br/>The Database has the following<br/>'+resultsSQL);
   //response.end();
 }
 var outputURL = console.log(UrlValue);
