@@ -10,15 +10,15 @@ var resultsSQL = "";
 var dummyVar = "";
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
-  var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
+  var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp')
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("SELECT original_url, short_url FROM url_short_microservice WHERE original_url ='"+queryOrignalHttpForUse+"'", function(err, result) {
+    client.query("SELECT original_url, short_url FROM url_short_microservice WHERE original_url ='"+OrignalHttpForUse+"'", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = JSON.stringify(result.rows[0]); }
+	   { resultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
@@ -37,7 +37,7 @@ var getInfoFromDB1 = function (request, response, next) {
 }
 var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
-  response.send(resultsSQL.replace(/&colon/g, ':'));
+  response.send(resultsSQL.replace(/&colon/g, ':')+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
