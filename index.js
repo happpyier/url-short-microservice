@@ -29,7 +29,7 @@ var getInfoFromDB1 = function (request, response, next) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   //{ resultsidSQL = JSON.stringify(result); }
-	   { resultsidSQL = Ohject.keys(result); }
+	   { resultsidSQL = result; }
 	   done();
     });
   });
