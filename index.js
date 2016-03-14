@@ -8,7 +8,7 @@ var pg = require('pg');
 var UrlValue = "";
 var resultsSQL = "";
 var dummyVar = "";
-var convertURL = function (request, response, next) {
+var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT original_url, short_url FROM url_short_microservice', function(err, result) {
@@ -23,7 +23,7 @@ var convertURL = function (request, response, next) {
   });
   next();
 }
-var convertURL2 = function (request, response){
+var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
   response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
@@ -35,7 +35,7 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
   //response.end('Its Over!'); 
 });
-app.get(/^\/http/i, [convertURL, convertURL2]);
+app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
 app.get(/^\/new\/http/i, function (request, response) {
   var OrignalHttp = (request.url).substring(5);
   response.send('This is the page that sends the url to the DB <br/>'+OrignalHttp);
