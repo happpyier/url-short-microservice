@@ -10,8 +10,9 @@ var resultsSQL = "";
 var dummyVar = "";
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
+  var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("SELECT original_url, short_url FROM url_short_microservice WHERE original_url ='"+OrignalHttpForUse+"'", function(err, result) {
+    client.query("SELECT original_url, short_url FROM url_short_microservice WHERE original_url ='"+queryOrignalHttpForUse+"'", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
