@@ -47,7 +47,7 @@ var sendInfoToDB1 = function (request, response, next) {
 var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
-  response.send(mysqlOrignalHttpForUse+'<br/>This is the page that gets the url from the DB <br/>');
+  response.send(mysqlOrignalHttpForUse+'<br/>This is the page that gets the url from the DB <br/>The Database has the following<br/>'+resultsSQL);
   //response.end();
 }
 var outputURL = console.log(UrlValue);
