@@ -30,7 +30,7 @@ var getInfoFromDB2 = function (request, response){
 }
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
-  var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
+  var mysqlOrignalHttpForUse = escape(OrignalHttpForUse);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('INSERT INTO url_short_microservice (original_url, short_url) VALUES ('+mysqlOrignalHttpForUse+', "test") WHERE NOT EXISTS ( SELECT original_url FROM url_short_microservice WHERE original_url ='+mysqlOrignalHttpForUse+')', function(err, result) {
       if (err)
@@ -46,7 +46,7 @@ var sendInfoToDB1 = function (request, response, next) {
 }
 var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
-  var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
+  var mysqlOrignalHttpForUse = escape(OrignalHttpForUse);
   response.send(mysqlOrignalHttpForUse+'<br/>This is the page that gets the url from the DB <br/>The Database has the following<br/>'+resultsSQL);
   //response.end();
 }
