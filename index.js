@@ -36,7 +36,7 @@ var getInfoFromDB1 = function (request, response, next) {
 }
 var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
-  response.send(resultsidSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
