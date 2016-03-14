@@ -36,7 +36,7 @@ var getInfoFromDB1 = function (request, response, next) {
 }
 var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
-  response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(resultsSQL.replace(/&colon/g, ':')+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
@@ -60,7 +60,7 @@ var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   var mysqlQuery = "INSERT INTO url_short_microservice (original_url, short_url) VALUES ("+mysqlOrignalHttpForUse+", 'test')";
-  response.send(mysqlOrignalHttpForUse.replace(/&colon/g, ':')+'<br/>This is the page that gets the url from the DB <br/>The Database has the following<br/>'+resultsSQL+'<br/> The query is<br/>'+mysqlQuery);
+  response.send(mysqlOrignalHttpForUse+'<br/>This is the page that sends the url to the DB <br/>The Database has the following<br/>'+resultsSQL+'<br/> The query is<br/>'+mysqlQuery);
   //response.end();
 }
 var outputURL = console.log(UrlValue);
