@@ -28,8 +28,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   //{ resultsidSQL = JSON.stringify(result); }
-	   { resultsidSQL = result.rows; }
+	   { resultsidSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
@@ -37,7 +36,7 @@ var getInfoFromDB1 = function (request, response, next) {
 }
 var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
-  response.send(resultsidSQL.replace(/&colon/g, ':')+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
+  response.send(resultsidSQL.id+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
