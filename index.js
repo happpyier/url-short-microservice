@@ -17,7 +17,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = JSON.stringify(result.rows); }
+	   { resultsSQL = JSON.stringify(result); }
 	   done();
     });
   });
@@ -28,7 +28,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = JSON.stringify(result); }
+	   { resultsidSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
