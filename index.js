@@ -21,6 +21,17 @@ var getInfoFromDB1 = function (request, response, next) {
 	   done();
     });
   });
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT id FROM url_short_microservice', function(err, result) {
+      if (err)
+       //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
+	   { resultsidSQL = ("Error " + err); }
+      else
+       //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
+	   { resultsidSQL = JSON.stringify(result.rows); }
+	   done();
+    });
+  });
   next();
 }
 var getInfoFromDB2 = function (request, response){
@@ -30,9 +41,10 @@ var getInfoFromDB2 = function (request, response){
 }
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
+  var mysqlID = resultsidSQL+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("INSERT INTO url_short_microservice (original_url, short_url) VALUES ('"+mysqlOrignalHttpForUse+"', 'https://url-short-microservice.herokuapp.com/'+id)", function(err, result) {
+    client.query("INSERT INTO url_short_microservice (original_url, short_url) VALUES ('"+mysqlOrignalHttpForUse+"', 'https://url-short-microservice.herokuapp.com/"+mysqlID"')", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
