@@ -40,7 +40,7 @@ var getInfoFromDB2 = function (request, response){
   response.send(resultsSQL.replace(/&colon/g, ':'));
   //response.end();
 }
-var redirect2 = function (request, response, next) {
+var redirect1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
