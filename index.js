@@ -51,7 +51,7 @@ var sendInfoToDB1 = function (request, response, next) {
 	   { resultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsSQL = JSON.stringify(result.rows[0]); }
+	   { resultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
