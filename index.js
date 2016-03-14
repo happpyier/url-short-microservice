@@ -43,8 +43,8 @@ var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("if(SELECT original_url FROM url_short_microservice WHERE original_url ='"+mysqlOrignalHttpForUse+"') {// we're done} else {INSERT INTO url_short_microservice (original_url, short_url) VALUES ('"+mysqlOrignalHttpForUse+"', 'https://url-short-microservice.herokuapp.com/"+mysqlID+"')}", function(err, result) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
+  client.query("WITH upsert AS(UPDATE url_short_microservice SET original_url='"+mysqlOrignalHttpForUse+"' WHERE original_url='"+mysqlOrignalHttpForUse+"' RETURNING *)INSERT INTO url_short_microservice (original_url, short_url) VALUES ('"+mysqlOrignalHttpForUse+"', 'https://url-short-microservice.herokuapp.com/"+mysqlID+"') WHERE NOT EXISTS (SELECT * FROM upsert)", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
