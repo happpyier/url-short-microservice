@@ -29,7 +29,7 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
-  var OrignalHttpForUse = (request.url).substring(1);
+  var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
   /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -47,7 +47,7 @@ var sendInfoToDB1 = function (request, response, next) {
   next();
 }
 var sendInfoToDB2 = function (request, response){
-  var OrignalHttpForUse = (request.url).substring(1);
+  var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = encodeURIComponent(OrignalHttpForUse);
   response.send(mysqlOrignalHttpForUse+'<br/>This is the page that gets the url from the DB <br/>');
   //response.end();
