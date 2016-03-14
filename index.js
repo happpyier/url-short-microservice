@@ -60,7 +60,7 @@ var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   var mysqlQuery = "INSERT INTO url_short_microservice (original_url, short_url) VALUES ("+mysqlOrignalHttpForUse+", 'test')";
-  response.send(mysqlOrignalHttpForUse+'<br/>This is the page that gets the url from the DB <br/>The Database has the following<br/>'+resultsSQL+'<br/> The query is<br/>'+mysqlQuery);
+  response.send('The Database has the following<br/>'+resultsSQL+'<br/>');
   //response.end();
 }
 var outputURL = console.log(UrlValue);
