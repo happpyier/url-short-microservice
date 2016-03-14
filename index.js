@@ -28,10 +28,10 @@ var getInfoFromDB2 = function (request, response){
   response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
 }
-var sendInfoFromDB1 = function (request, response, next) {
+var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT original_url, short_url FROM url_short_microservice', function(err, result) {
+    client.query('INSERT INTO url_short_microservice (original_url, short_url) VALUES ('+OrignalHttpForUse+', "test") WHERE NOT EXISTS ( SELECT original_url FROM url_short_microservice WHERE original_url ='+OrignalHttpForUse+')', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
@@ -43,7 +43,7 @@ var sendInfoFromDB1 = function (request, response, next) {
   });
   next();
 }
-var sendInfoFromDB2 = function (request, response){
+var sendInfoToDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
   response.send(resultsSQL+'<br/>This is the page that gets the url from the DB <br/>'+OrignalHttp);
   //response.end();
@@ -56,7 +56,7 @@ app.get('/', function(request, response) {
   //response.end('Its Over!'); 
 });
 app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
-app.get(/^\/new\/http/i, [sendInfoFromDB1, sendInfoFromDB2]);
+app.get(/^\/new\/http/i, [sendInfoToDB1, sendInfoToDB2]);
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
