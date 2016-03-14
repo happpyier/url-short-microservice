@@ -11,9 +11,7 @@ var dummyVar = "";
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    //client.query('SELECT id, original_url, short_url FROM url_short_microservice', function(err, result) {
-	client.query('DROP TABLE url_short_microservice', function(err, result) {
-	DROP TABLE
+    client.query('DROP TABLE url_short_microservice', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsSQL = ("Error " + err); }
