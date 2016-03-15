@@ -42,7 +42,7 @@ var getInfoFromDB2 = function (request, response){
 }
 var redirect1 = function (request, response, next) {
   
-  var OrignalHttpForUse = (request.url).substring(5);
+  var OrignalHttpForUse = (request.params.id);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   /*
@@ -60,14 +60,14 @@ var redirect1 = function (request, response, next) {
   next();
 }
 var redirect2 = function (request, response){
-  var OrignalHttpForUse = (request.url).substring(5);
+  var OrignalHttpForUse = (request.params.id).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
   response.send(' it works ');
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
-  var OrignalHttpForUse = (request.url).substring(5);
+  var OrignalHttpForUse = (request.url);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
