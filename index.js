@@ -64,7 +64,8 @@ var redirect1 = function (request, response, next) {
 };
 var redirect2 = function (request, response){
   var pageRedirectLocation = redirectresultsSQL.replace(/&colon/g, ':');
-  response.redirect(pageRedirectLocation);
+  response.writeHead(302, {'Location': pageRedirectLocation});
+  response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
