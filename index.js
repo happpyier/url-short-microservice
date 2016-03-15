@@ -12,7 +12,7 @@ var resultsSQL = "";
 var dummyVar = "";
 var resultsidSQL = "";
 var redirectresultsSQL = "";
-
+var DummyVal = "";
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -47,6 +47,7 @@ var getInfoFromDB2 = function (request, response){
 };
 var redirect1 = function (request, response, next) {
   var mysqlOrignalHttpForUse = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
+  DummyVal = mysqlOrignalHttpForUse;
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
   client.query("SELECT short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
@@ -65,7 +66,7 @@ var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(redirectresultsSQL);
+  response.send(DummyVal);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
