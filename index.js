@@ -41,7 +41,6 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 }
 var redirect1 = function (request, response, next) {
-  /*
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -53,16 +52,15 @@ var redirect1 = function (request, response, next) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
+	   done();
     });
   });
-  */
   next();
 }
 var redirect2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-  //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(' it works ');
+  response.send(redirectresultsSQL.replace(/&colon/g, ':'));
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
@@ -97,7 +95,7 @@ app.get('/', function(request, response) {
 });
 app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
 app.get(/^\/new\/http/i, [sendInfoToDB1, sendInfoToDB2]);
-app.get('/:id(\\d+)', [redirect1, redirect2]);
+//app.get(/\/(\d+)/, [redirect1, redirect2]);
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
