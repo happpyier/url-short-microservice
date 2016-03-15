@@ -55,10 +55,10 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
+	   { redirectresultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
-	setTimeout(function(){ client.end(); }, 500);
+	//setTimeout(function(){ client.end(); }, 500);
 	//client.end();
   });
   next();
