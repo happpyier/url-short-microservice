@@ -12,7 +12,7 @@ var resultsSQL = "";
 var dummyVar = "";
 var resultsidSQL = "";
 var redirectresultsSQL = "";
-/*
+
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -39,12 +39,12 @@ var getInfoFromDB1 = function (request, response, next) {
     });
   });
   next();
-}
+};
 var getInfoFromDB2 = function (request, response){
   var OrignalHttp = (request.url).substring(1);
   response.send(resultsSQL.replace(/&colon/g, ':'));
   //response.end();
-}
+};
 var redirect1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
@@ -61,13 +61,13 @@ var redirect1 = function (request, response, next) {
     });
   });
   next();
-}
+};
 var redirect2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   response.send(redirectresultsSQL.replace(/&colon/g, ':'));
   //response.end();
-}
+};
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
@@ -84,7 +84,7 @@ var sendInfoToDB1 = function (request, response, next) {
     });
   });
   next();
-}
+};
 var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -92,7 +92,6 @@ var sendInfoToDB2 = function (request, response){
   //response.end();
 }
 var outputURL = console.log(UrlValue);
-*/
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
