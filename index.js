@@ -69,7 +69,7 @@ var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(mysqlOrignalHttpForUseId);
+  response.send('mysqlOrignalHttpForUseId');
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
