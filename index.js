@@ -1,5 +1,7 @@
-//http://expressjs.com/en/guide/routing.html USING this as a reference;
-//http://stackoverflow.com/questions/20089582/how-to-get-url-parameter-in-express-node-js Also a reference;
+/*
+http://expressjs.com/en/guide/routing.html USING this as a reference;
+http://stackoverflow.com/questions/20089582/how-to-get-url-parameter-in-express-node-js Also a reference;
+*/
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -10,6 +12,7 @@ var resultsSQL = "";
 var dummyVar = "";
 var resultsidSQL = "";
 var redirectresultsSQL = "";
+/*
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
   var queryOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -89,6 +92,7 @@ var sendInfoToDB2 = function (request, response){
   //response.end();
 }
 var outputURL = console.log(UrlValue);
+*/
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
