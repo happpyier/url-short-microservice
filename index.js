@@ -49,7 +49,7 @@ var redirect1 = function (request, response, next) {
   var mysqlOrignalHttpForUse = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
-  client.query("SELECT original_url, short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
+  client.query("SELECT short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { redirectresultsSQL = ("Error " + err); }
@@ -65,7 +65,7 @@ var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(redirectresultsSQL);
+  response.send(mysqlOrignalHttpForUse);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
