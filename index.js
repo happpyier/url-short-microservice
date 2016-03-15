@@ -95,7 +95,7 @@ app.get('/', function(request, response) {
 });
 app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
 app.get(/^\/new\/http/i, [sendInfoToDB1, sendInfoToDB2]);
-app.get(/\/(\d+)/, [redirect1, redirect2]);
+app.get(/\/\d*/, [redirect1, redirect2]);
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
