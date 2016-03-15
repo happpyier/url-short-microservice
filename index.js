@@ -43,6 +43,7 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 }
 var redirect1 = function (request, response, next) {
+  /*
   var OrignalHttpForUse = (request.url).substring(1);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
@@ -58,6 +59,8 @@ var redirect1 = function (request, response, next) {
   client.end();
   next();
   response.end();
+  */
+  next();
 }
 var redirect2 = function (request, response){
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
@@ -97,7 +100,7 @@ app.get('/', function(request, response) {
 });
 app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
 app.get(/^\/new\/http/i, [sendInfoToDB1, sendInfoToDB2]);
-//app.get(/^\/\d/, [redirect1, redirect2]);
+app.get(/^\/\d/, [redirect1, redirect2]);
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
