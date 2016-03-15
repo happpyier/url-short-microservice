@@ -89,9 +89,7 @@ var sendInfoToDB2 = function (request, response){
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   if (resultsSQL.length < 0)
   {
-	var PrepageRedirectLocation = redirectresultsSQL.replace(/&colon/g, ':');
-	var pageRedirectLocation = PrepageRedirectLocation.replace(/"/g, '');
-	response.redirect(pageRedirectLocation);
+	response.send("This Page has already been put into the system, Simply remove /New to find its short URL");
   }
   else
   {
