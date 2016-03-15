@@ -62,6 +62,7 @@ var redirect1 = function (request, response, next) {
     });
   });
   */
+  response.end();
   next();
 };
 var redirect2 = function (request, response){
