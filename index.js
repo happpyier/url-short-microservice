@@ -21,6 +21,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsSQL = JSON.stringify(result.rows[0]); }
 	   done();
     });
+	client.end();
   });
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT id FROM url_short_microservice order by id desc limit 1', function(err, result) {
@@ -32,6 +33,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
 	   done();
     });
+	client.end();
   });
   next();
 }
@@ -53,6 +55,7 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
     });
   });
+  client.end();
   next();
   response.end();
 }
@@ -75,6 +78,7 @@ var sendInfoToDB1 = function (request, response, next) {
 	   { resultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
+	client.end();
   });
   next();
 }
