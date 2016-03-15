@@ -56,7 +56,7 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { redirectresultsSQL = JSON.stringify(result.rows); }
+	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
 	   done();
     });
   });
@@ -66,7 +66,7 @@ var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(mysqlOrignalHttpForUse);
+  response.send(redirectresultsSQL);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
