@@ -66,8 +66,9 @@ var redirect1 = function (request, response, next) {
 };
 var redirect2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
-  var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
+  //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   response.send(redirectresultsSQL.replace(/&colon/g, ':'));
+  response.send(OrignalHttpForUse);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
