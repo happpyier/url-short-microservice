@@ -21,7 +21,6 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsSQL = JSON.stringify(result.rows[0]); }
 	   done();
     });
-	client.end();
   });
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT id FROM url_short_microservice order by id desc limit 1', function(err, result) {
@@ -33,7 +32,6 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
 	   done();
     });
-	client.end();
   });
   next();
 }
@@ -43,9 +41,11 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 }
 var redirect1 = function (request, response, next) {
-  /*
-  var OrignalHttpForUse = (request.url).substring(1);
+  
+  var OrignalHttpForUse = (request.params.id);
+    /*
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
+
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
   client.query("SELECT original_url, short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
       if (err)
@@ -56,16 +56,15 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
     });
   });
-  client.end();
-  next();
-  response.end();
   */
   next();
 }
 var redirect2 = function (request, response){
+  var OrignalHttpForUse = (request.params.id);
+  var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
   response.send(' it works ');
-  response.end();
+  //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
@@ -81,7 +80,6 @@ var sendInfoToDB1 = function (request, response, next) {
 	   { resultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
-	client.end();
   });
   next();
 }
@@ -100,7 +98,7 @@ app.get('/', function(request, response) {
 });
 app.get(/^\/http/i, [getInfoFromDB1, getInfoFromDB2]);
 app.get(/^\/new\/http/i, [sendInfoToDB1, sendInfoToDB2]);
-app.get(/^\/\d/, [redirect1, redirect2]);
+app.get('/:id(\\d+)', [redirect1, redirect2]);
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
