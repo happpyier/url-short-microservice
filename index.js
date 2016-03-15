@@ -56,8 +56,8 @@ var redirect1 = function (request, response, next) {
   next();
 }
 var redirect2 = function (request, response){
-  //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(' it works ');
+  response.send(redirectresultsSQL.replace(/&colon/g, ':'));
+  //response.send(' it works ');
   //response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
