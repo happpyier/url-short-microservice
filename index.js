@@ -12,7 +12,6 @@ var resultsSQL = "";
 var dummyVar = "";
 var resultsidSQL = "";
 var redirectresultsSQL = "";
-var var mysqlOrignalHttpForUseId = "";
 
 var getInfoFromDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(1);
@@ -47,29 +46,26 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 };
 var redirect1 = function (request, response, next) {
-  mysqlOrignalHttpForUseId = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
+  var mysqlOrignalHttpForUse = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-  /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
-  client.query("SELECT short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUseId+"'", function(err, result) {
+  client.query("SELECT short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { redirectresultsSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
+	   { redirectresultsSQL = JSON.stringify(result.rows); }
 	   done();
     });
   });
-  */
-  response.end();
   next();
 };
 var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send('mysqlOrignalHttpForUseId');
+  response.send(redirectresultsSQL);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
