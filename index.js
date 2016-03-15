@@ -87,8 +87,17 @@ var sendInfoToDB1 = function (request, response, next) {
 var sendInfoToDB2 = function (request, response){
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-  response.send(resultsSQL.replace(/&colon/g, ':'));
-  //response.end();
+  if (resultsSQL.length < 0)
+  {
+	getInfoFromDB1;
+	getInfoFromDB2;
+  }
+  else
+  {
+    response.send(resultsSQL.replace(/&colon/g, ':'));
+    //response.end();
+  }
+
 }
 var outputURL = console.log(UrlValue);
 app.set('port', (process.env.PORT || 5000));
