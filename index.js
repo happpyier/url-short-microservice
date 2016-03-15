@@ -59,8 +59,8 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
 	   done();
     });
-	client.end();
   });
+  client.end();
   next();
 };
 var redirect2 = function (request, response){
