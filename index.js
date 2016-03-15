@@ -43,9 +43,7 @@ var getInfoFromDB2 = function (request, response){
 var redirect1 = function (request, response, next) {
   
   var OrignalHttpForUse = (request.params.id);
-    /*
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
-
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
   client.query("SELECT original_url, short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUse+"'", function(err, result) {
       if (err)
@@ -56,7 +54,6 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
     });
   });
-  */
   next();
 }
 var redirect2 = function (request, response){
