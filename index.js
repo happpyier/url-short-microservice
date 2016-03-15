@@ -54,11 +54,12 @@ var redirect1 = function (request, response, next) {
     });
   });
   next();
+  response.end();
 }
 var redirect2 = function (request, response){
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
   response.send(' it works ');
-  //response.end();
+  response.end();
 }
 var sendInfoToDB1 = function (request, response, next) {
   var OrignalHttpForUse = (request.url).substring(5);
