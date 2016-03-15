@@ -58,8 +58,8 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
 	   done();
     });
-	//setTimeout(function(){ client.end(); }, 500);
-	client.end();
+	setTimeout(function(){ client.end(); }, 500);
+	//client.end();
   });
   next();
 };
