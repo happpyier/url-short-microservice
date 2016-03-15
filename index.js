@@ -46,6 +46,7 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 };
 var redirect1 = function (request, response, next) {
+  /*
   var OrignalHttpForUse = (request.url).substring(5);
   var mysqlID = parseInt(resultsidSQL)+1;
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
@@ -59,9 +60,9 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
 	   done();
     });
-	setTimeout(function(){ client.end(); }, 500);
+	//setTimeout(function(){ client.end(); }, 500);
   });
-  
+  */
   next();
 };
 var redirect2 = function (request, response){
