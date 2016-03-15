@@ -49,6 +49,7 @@ var getInfoFromDB2 = function (request, response){
 var redirect1 = function (request, response, next) {
   mysqlOrignalHttpForUseId = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
+  /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
   client.query("SELECT short_url FROM url_short_microservice WHERE short_url='"+mysqlOrignalHttpForUseId+"'", function(err, result) {
       if (err)
@@ -60,13 +61,14 @@ var redirect1 = function (request, response, next) {
 	   done();
     });
   });
+  */
   next();
 };
 var redirect2 = function (request, response){
   //var OrignalHttpForUse = (request.params.id);
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   //response.send(redirectresultsSQL.replace(/&colon/g, ':'));
-  response.send(redirectresultsSQL);
+  response.send(mysqlOrignalHttpForUseId);
   //response.end();
 };
 var sendInfoToDB1 = function (request, response, next) {
