@@ -59,6 +59,7 @@ var redirect1 = function (request, response, next) {
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].original_url); }
 	   done();
     });
+    client.end();
   });
   next();
 };
@@ -89,8 +90,9 @@ var sendInfoToDB2 = function (request, response){
   var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   if (resultsSQL.length < 0)
   {
-	getInfoFromDB1;
-	getInfoFromDB2;
+	var PrepageRedirectLocation = redirectresultsSQL.replace(/&colon/g, ':');
+	var pageRedirectLocation = PrepageRedirectLocation.replace(/"/g, '');
+	response.redirect(pageRedirectLocation);
   }
   else
   {
