@@ -52,7 +52,6 @@ var redirect1 = function (request, response, next) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { redirectresultsSQL = JSON.stringify(result.rows[0].short_url); }
-	   done();
     });
   });
   next();
