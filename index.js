@@ -26,7 +26,7 @@ var getInfoFromDB1 = function (request, response, next) {
 	   { resultsSQL = JSON.stringify(result.rows[0]); }
 	   done();
     });
-  });
+  }); 
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT id FROM url_short_microservice order by id desc limit 1', function(err, result) {
       if (err)
