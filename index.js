@@ -64,7 +64,7 @@ var redirect1 = function (request, response, next) {
 };
 var redirect2 = function (request, response){
   var PrepageRedirectLocation = redirectresultsSQL.replace(/&colon/g, ':');
-  pageRedirectLocation = '//' + PrepageRedirectLocation.replace(/https/g, '').replace(/http/g, '').replace(/%22/g, '').replace(/%22/g, '').replace(/\"/g, '');
+  pageRedirectLocation = '//' + PrepageRedirectLocation.replace(/https/g, '').replace(/http/g, '').replace(/%22/g, '').replace(/%22/g, '').replace(/"/g, '');
   response.writeHead(302, {'Location': pageRedirectLocation});
   response.end();
 };
