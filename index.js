@@ -46,7 +46,7 @@ var getInfoFromDB2 = function (request, response){
   //response.end();
 };
 var redirect1 = function (request, response, next) {
-  var mysqlOrignalHttpForUse = 'https&colon//url-short-microservice.herokuapp.com/'+request.params.id;
+  var mysqlOrignalHttpForUse = 'https://url-short-microservice.herokuapp.com/'+request.params.id;
   DummyVal = mysqlOrignalHttpForUse;
   //var mysqlOrignalHttpForUse = OrignalHttpForUse.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt').replace(/"/g, '&quot').replace(/:/g, '&colon');
   pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
